@@ -60,7 +60,6 @@ def security_credential_generator():
     output: base64 encoded encrypted string
     #PyCrypto does not support X.509 certificates. You must first extract the public key with the command:
      openssl x509 -inform pem -in ssl_client_cert_that_you_get_from_safaricom.pem -pubkey -noout > ssl_client_cert_key_of_the_client_cert_that_you_get_from_safaricom.pem 
-     publickey.pem saved as strings in their respective settings file.
      #see: http://stackoverflow.com/questions/12911373/how-do-i-use-a-x509-certificate-with-pycrypto
     """
     
@@ -68,7 +67,7 @@ def security_credential_generator():
     # openssl x509 -inform pem -in ssl_client_cert_that_you_get_from_safaricom.pem -pubkey -noout > ssl_client_cert_key_of_the_client_cert_that_you_get_from_safaricom.pem
     ENCRYPTING_KEY = 'path/to/ssl_client_cert_key_of_the_client_cert_that_you_get_from_safaricom.pem'
 
-    password = settings.INTIATOR_PASSWORD
+    password = INTIATOR_PASSWORD
     f = open(ENCRYPTING_KEY, "r")
     key = f.read()
     rsakey = RSA.importKey(key)
@@ -188,7 +187,6 @@ def send_money(phone_number, amount, request_id):
              "SOAPAction": http_safaricom_generic_requests_url
              }
 
-    ssl_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'ssl'))
     client_ssl_cert_file = 'path/to/ssl_client_cert_that_you_get_from_safaricom'
     client_ssl_key_file = ENCRYPTING_KEY
 
