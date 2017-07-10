@@ -41,7 +41,7 @@ INTIATOR_PASSWORD = 'get_this_from_safaricom'
 
 
 
-def password-encoder():
+def password_encoder():
     """
     """
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
@@ -84,7 +84,7 @@ def send_money(phone_number, amount, request_id):
     """
 
     cbp_request_stamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    encrypted_password = password-encoder()
+    encrypted_password = password_encoder()
     security_credential = security_credential_generator()
 
     request = u"""<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://api-v1.gen.mm.vodafone.com/mminterface/request">
